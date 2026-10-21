@@ -220,9 +220,9 @@ textarea{resize:vertical;min-height:60px}
     <button type="button" class="brand" id="brandBtn" aria-label="Touchline credits"><img id="brandBall" alt=""><span>Touchline</span></button>
     <nav class="tabs" role="tablist" aria-label="Sections">
       <button role="tab" id="t-lineup" aria-controls="p-lineup" data-tab="lineup">Lineup</button>
+      <button role="tab" id="t-matches" aria-controls="p-matches" data-tab="matches">Matches</button>
       <button role="tab" id="t-board" aria-controls="p-board" data-tab="board">Play board</button>
       <button role="tab" id="t-players" aria-controls="p-players" data-tab="players">Players</button>
-      <button role="tab" id="t-matches" aria-controls="p-matches" data-tab="matches">Matches</button>
     </nav>
     <div class="status" id="status">Saved on this device</div>
   </header>
@@ -337,6 +337,13 @@ textarea{resize:vertical;min-height:60px}
           <h2>Team colour</h2>
           <div class="swatches" id="swatches"></div>
         </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+        <div class="panel">
+          <h2>Squad <small id="squadCount"></small></h2>
+          <div class="banner" id="exampleBanner" hidden><p>These are example players so you can try the app. Clear them to start your own squad.</p><button class="btn" id="clearExamples" type="button">Clear examples</button><button class="btn" id="keepExamples" type="button">Keep</button></div>
+          <ul class="plist" id="plist"></ul>
+        </div>
         <div class="panel">
           <h2>Backup</h2>
           <p class="hint">Save your players and match results to a file, or restore them from one.</p>
@@ -351,11 +358,6 @@ textarea{resize:vertical;min-height:60px}
             <button class="btn" id="bkCancel" type="button">Cancel</button>
           </div>
         </div>
-      </div>
-      <div class="panel" style="min-width:0">
-        <h2>Squad <small id="squadCount"></small></h2>
-        <div class="banner" id="exampleBanner" hidden><p>These are example players so you can try the app. Clear them to start your own squad.</p><button class="btn" id="clearExamples" type="button">Clear examples</button><button class="btn" id="keepExamples" type="button">Keep</button></div>
-        <ul class="plist" id="plist"></ul>
       </div>
     </div>
   </section>
@@ -1153,7 +1155,7 @@ function runSplash(){
 }
 
 /* ---------- Tabs & events ---------- */
-const TABS = ["lineup","board","players","matches"];
+const TABS = ["lineup","matches","board","players"];
 function setTab(name){
   if(!TABS.includes(name)) name = "lineup";
   document.querySelectorAll(".tabs button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === name)));
