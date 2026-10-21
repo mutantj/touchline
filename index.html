@@ -59,8 +59,9 @@ button.brand:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .status.cloud::before{background:var(--accent)}
 .status.pending::before{background:var(--warn)}
 .tabs{display:flex;gap:4px;padding:4px;background:var(--surface2);border-radius:12px;flex:1 1 100%;order:3}
-@media (min-width:720px){.tabs{flex:0 1 420px;order:0}.status{order:4}}
+@media (min-width:720px){.tabs{flex:0 1 540px;order:0}.status{order:4}}
 .tabs button{flex:1;border:0;background:transparent;padding:9px 6px;border-radius:9px;font-family:var(--f-disp);font-weight:700;font-size:16px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);cursor:pointer}
+@media (max-width:440px){.tabs button{font-size:14px;padding-inline:2px;white-space:nowrap}}
 .tabs button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
 .tabs button:focus-visible,.btn:focus-visible,select:focus-visible,input:focus-visible,.tok:focus-visible,.chip:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 
@@ -73,7 +74,7 @@ button.brand:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .row{display:flex;flex-wrap:wrap;gap:8px;align-items:end}
 .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 label.fld{display:flex;flex-direction:column;gap:4px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);min-width:0}
-select,input[type=text],input[type=number]{width:100%;min-width:0;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--bg);font-size:15px;letter-spacing:0;text-transform:none;font-weight:400;color:var(--ink)}
+select,input[type=text],input[type=number],input[type=date],textarea{width:100%;min-width:0;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--bg);font-size:15px;letter-spacing:0;text-transform:none;font-weight:400;color:var(--ink)}
 .grow{flex:1 1 140px;min-width:0}
 .btn{border:1px solid var(--line);background:var(--surface);border-radius:9px;padding:9px 12px;font-weight:700;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;justify-content:center;white-space:nowrap}
 .btn:hover{border-color:var(--muted)}
@@ -148,6 +149,36 @@ select,input[type=text],input[type=number]{width:100%;min-width:0;padding:9px 10
 .players-layout{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}
 @media (min-width:860px){.players-layout{grid-template-columns:340px minmax(0,1fr);align-items:start}}
 
+/* Matches */
+textarea{resize:vertical;min-height:60px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+#mForm{scroll-margin-top:80px}
+.lbl{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.score{display:flex;align-items:center;justify-content:center;gap:6px;padding-block:4px}
+.sc{display:flex;flex-direction:column;align-items:center;gap:4px}
+.stp{display:flex;align-items:center;gap:4px}
+.stp output{min-width:40px;text-align:center;font:800 40px/1 var(--f-disp);font-variant-numeric:tabular-nums}
+.score .dash{font:700 28px var(--f-disp);color:var(--muted);margin-top:18px}
+.goals{display:flex;flex-direction:column;gap:8px}
+.goal{border:1px solid var(--line);border-radius:10px;padding:8px;background:var(--bg);display:flex;flex-direction:column;gap:6px}
+.goal select{background:var(--surface)}
+.goal .gh,.goal .ast{display:flex;align-items:center;gap:8px}
+.goal .gn{flex:none;width:56px;font:700 14px var(--f-disp);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.goal .ast .lbl{flex:none;width:56px;text-align:right}
+.goal .addast{align-self:flex-start;margin-left:64px;padding:5px 10px;font-size:13px}
+.res{flex:none;width:28px;height:28px;border-radius:7px;display:grid;place-items:center;font:800 15px/1 var(--f-disp)}
+.res.W{background:var(--accent);color:var(--accent-ink)}
+.res.D{background:var(--surface2);color:var(--ink);border:1px solid var(--line)}
+.res.L{background:var(--rec);color:#fff}
+.stats{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.stat{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 2px 6px;text-align:center}
+.stat b{display:block;font:800 22px/1.1 var(--f-disp);font-variant-numeric:tabular-nums}
+.stat abbr{font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--muted);text-decoration:none}
+.formrow{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.formrow .lbl{margin-right:4px}
+.plays .meta.wrap{white-space:normal;overflow-wrap:anywhere}
+.plays .fs{flex:none;font:800 20px var(--f-disp);font-variant-numeric:tabular-nums;padding-inline:4px}
+
 /* Sheet */
 .sheet-bg{position:fixed;inset:0;background:rgba(5,15,10,.5);z-index:20;display:flex;align-items:flex-end;justify-content:center}
 @media (min-width:720px){.sheet-bg{align-items:center}}
@@ -191,6 +222,7 @@ select,input[type=text],input[type=number]{width:100%;min-width:0;padding:9px 10
       <button role="tab" id="t-lineup" aria-controls="p-lineup" data-tab="lineup">Lineup</button>
       <button role="tab" id="t-board" aria-controls="p-board" data-tab="board">Play board</button>
       <button role="tab" id="t-players" aria-controls="p-players" data-tab="players">Players</button>
+      <button role="tab" id="t-matches" aria-controls="p-matches" data-tab="matches">Matches</button>
     </nav>
     <div class="status" id="status">Saved on this device</div>
   </header>
@@ -204,6 +236,7 @@ select,input[type=text],input[type=number]{width:100%;min-width:0;padding:9px 10
           <button class="btn" id="luNew" type="button">New</button>
           <button class="btn" id="luRename" type="button">Rename</button>
           <button class="btn danger" id="luDelete" type="button">Delete</button>
+          <button class="btn" id="luMatch" type="button">Record match</button>
         </div>
         <div class="row" id="luRenameRow" hidden>
           <label class="fld grow">Lineup name<input type="text" id="luName" maxlength="40"></label>
@@ -304,11 +337,36 @@ select,input[type=text],input[type=number]{width:100%;min-width:0;padding:9px 10
           <h2>Team colour</h2>
           <div class="swatches" id="swatches"></div>
         </div>
+        <div class="panel">
+          <h2>Backup</h2>
+          <p class="hint">Save your players and match results to a file, or restore them from one.</p>
+          <div class="row">
+            <button class="btn" id="bkExport" type="button">Export</button>
+            <button class="btn" id="bkImport" type="button">Import</button>
+            <input type="file" id="bkFile" accept="application/json,.json" hidden>
+          </div>
+          <p class="hint" id="bkMsg" aria-live="polite"></p>
+          <div class="row" id="bkConfirmRow" hidden>
+            <button class="btn danger confirm" id="bkConfirm" type="button">Confirm import</button>
+            <button class="btn" id="bkCancel" type="button">Cancel</button>
+          </div>
+        </div>
       </div>
       <div class="panel" style="min-width:0">
         <h2>Squad <small id="squadCount"></small></h2>
         <div class="banner" id="exampleBanner" hidden><p>These are example players so you can try the app. Clear them to start your own squad.</p><button class="btn" id="clearExamples" type="button">Clear examples</button><button class="btn" id="keepExamples" type="button">Keep</button></div>
         <ul class="plist" id="plist"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- MATCHES -->
+  <section id="p-matches" role="tabpanel" aria-labelledby="t-matches" hidden>
+    <div class="players-layout">
+      <form class="panel" id="mForm" autocomplete="off"></form>
+      <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+        <div class="panel"><h2>Team record</h2><div id="mRecord" style="display:flex;flex-direction:column;gap:12px"></div></div>
+        <div class="panel"><h2>Results <small id="mCount"></small></h2><ul class="plays" id="mList"></ul></div>
       </div>
     </div>
   </section>
@@ -377,7 +435,7 @@ const lsSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } ca
 function defaultState(){
   const players = EXAMPLE.map(([name,num,pos]) => ({id:uid(), name, num, pos}));
   const lu = {id:uid(), name:"Saturday match", format:"8v8", formation:"3-3-1", slots:buildSlots("8v8","3-3-1")};
-  const st = {v:1, example:true, rosterImport:ROSTER_ID, teamColor:"#f2c230", labelMode:"pos", players, lineups:[lu], lineupId:lu.id, board:null};
+  const st = {v:1, example:true, rosterImport:ROSTER_ID, teamColor:"#f2c230", labelMode:"pos", players, lineups:[lu], lineupId:lu.id, board:null, matches:[]};
   autoFill(st, lu);
   return st;
 }
@@ -387,7 +445,26 @@ function normalize(s){
   if(!s.lineups.find(l => l.id === s.lineupId)) s.lineupId = s.lineups[0].id;
   if(!LABELS.find(l => l[0] === s.labelMode)) s.labelMode = "pos";
   if(!s.teamColor) s.teamColor = "#f2c230";
+  s.matches = Array.isArray(s.matches) ? s.matches.map(normalizeMatch).filter(Boolean) : [];
   return s;
+}
+function today(){ const d = new Date(); return new Date(d - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10); }
+// A match keeps a snapshot of the lineup it was played with, and one goals entry per goal we scored.
+function normalizeMatch(m){
+  if(!m || typeof m !== "object") return null;
+  const id = v => typeof v === "string" && v ? v : null;
+  const score = v => clamp(parseInt(v, 10) || 0, 0, 99);
+  const out = {id:id(m.id) || uid(), created:Number(m.created) || Date.now(), date:/^\d{4}-\d{2}-\d{2}$/.test(m.date) ? m.date : today(),
+    opponent:String(m.opponent ?? "").slice(0, 40), home:m.home !== false, us:score(m.us), them:score(m.them),
+    lineupId:id(m.lineupId), lineupName:String(m.lineupName ?? ""), format:String(m.format ?? ""), formation:String(m.formation ?? ""),
+    slots:Array.isArray(m.slots) ? m.slots.filter(s => s && typeof s === "object").map(s => ({pos:String(s.pos ?? ""), pid:id(s.pid)})) : [],
+    notes:String(m.notes ?? "").slice(0, 500)};
+  const goals = Array.isArray(m.goals) ? m.goals : [];
+  out.goals = Array.from({length:out.us}, (_, i) => {
+    const g = goals[i] && typeof goals[i] === "object" ? goals[i] : {}, scorer = id(g.scorer);
+    return {scorer, assists:[...new Set((Array.isArray(g.assists) ? g.assists : []).map(id))].filter(a => a && a !== scorer).slice(0, 2)};
+  });
+  return out;
 }
 // One-time swap of the example squad for the team's real roster; players the coach added are kept.
 let rosterChanged = false;
@@ -806,18 +883,83 @@ function renderPlayers(){
   $("#exampleBanner").hidden = !state.example || !state.players.length;
   $("#squadCount").textContent = state.players.length + (state.players.length === 1 ? " player" : " players");
   const lu = lineup(), where = new Map(lu.slots.map(s => [s.pid, s.pos]));
-  const list = [...state.players].sort((a,b) => (Number(a.num) || 999) - (Number(b.num) || 999) || a.name.localeCompare(b.name));
+  const list = sortedPlayers(), tally = playerTallies();
   $("#plist").innerHTML = list.length ? list.map(p => {
     if(editing === p.id) return `<li data-pid="${p.id}"><form class="addform" style="width:100%" data-edit="${p.id}"><label class="fld">Name<input type="text" name="name" maxlength="40" required value="${esc(p.name)}"></label><label class="fld">Number<input type="number" name="num" min="0" max="99" value="${p.num ?? ""}"></label><label class="fld full">Preferred position<select name="pos">${POS_LIST.map(x => `<option ${x === p.pos ? "selected" : ""}>${x}</option>`).join("")}</select></label><div class="row full"><button class="btn primary" type="submit">Save</button><button class="btn" type="button" data-cancel>Cancel</button></div></form></li>`;
-    const w = where.get(p.id);
-    return `<li data-pid="${p.id}"><span class="badge">${p.num ?? ""}</span><div class="pinfo"><b>${esc(p.name)}</b><span>${p.pos && p.pos !== "Any" ? p.pos : "Any position"} · ${w ? "Playing " + w : "Bench"} in ${esc(lu.name)}</span></div><div class="pacts"><button class="btn" type="button" data-edit-btn="${p.id}">Edit</button><button class="btn danger ${confirmDel === p.id ? "confirm" : ""}" type="button" data-remove="${p.id}">${confirmDel === p.id ? "Confirm remove" : "Remove"}</button></div></li>`;
+    const w = where.get(p.id), t = tally[p.id];
+    return `<li data-pid="${p.id}"><span class="badge">${p.num ?? ""}</span><div class="pinfo"><b>${esc(p.name)}</b><span>${p.pos && p.pos !== "Any" ? p.pos : "Any position"} · ${w ? "Playing " + w : "Bench"} in ${esc(lu.name)}${t ? ` · ${t.g} G · ${t.a} A` : ""}</span></div><div class="pacts"><button class="btn" type="button" data-edit-btn="${p.id}">Edit</button><button class="btn danger ${confirmDel === p.id ? "confirm" : ""}" type="button" data-remove="${p.id}">${confirmDel === p.id ? "Confirm remove" : "Remove"}</button></div></li>`;
   }).join("") : `<li class="empty-note" style="display:block">Your squad is empty. Add players with the form.</li>`;
 }
+const sortedPlayers = () => [...state.players].sort((a,b) => (Number(a.num) || 999) - (Number(b.num) || 999) || a.name.localeCompare(b.name));
 function removePlayer(id){
   state.players = state.players.filter(p => p.id !== id);
   state.lineups.forEach(l => l.slots.forEach(s => { if(s.pid === id) s.pid = null; }));
   persist();
 }
+
+/* ---------- Matches tab ---------- */
+let mdraft = null, mDelArmed = null;
+const matchResult = m => m.us > m.them ? "W" : m.us < m.them ? "L" : "D";
+const byDate = (a, b) => a.date.localeCompare(b.date) || a.created - b.created;
+const playerName = id => { const p = playerById(id); return p ? p.name : "Former player"; };
+const plural = (n, one, many) => n + " " + (n === 1 ? one : many);
+const fmtDate = d => new Date(d + "T00:00").toLocaleDateString(undefined, {day:"numeric", month:"short", year:"numeric"});
+function snapLineup(m, lu){ Object.assign(m, {lineupId:lu.id, lineupName:lu.name, format:lu.format, formation:lu.formation, slots:lu.slots.map(s => ({pos:s.pos, pid:s.pid}))}); }
+function newMatch(){ const m = {id:null, created:0, date:today(), opponent:"", home:true, us:0, them:0, goals:[], notes:""}; snapLineup(m, lineup()); return m; }
+function teamStats(){
+  const s = {P:0, W:0, D:0, L:0, GF:0, GA:0};
+  state.matches.forEach(m => { s.P++; s[matchResult(m)]++; s.GF += m.us; s.GA += m.them; });
+  return {...s, GD:s.GF - s.GA, form:[...state.matches].sort(byDate).slice(-5).map(matchResult)};
+}
+function playerTallies(){
+  const t = {}, add = (id, k) => { if(id) (t[id] ||= {g:0, a:0})[k]++; };
+  state.matches.forEach(m => m.goals.forEach(g => { add(g.scorer, "g"); g.assists.forEach(a => add(a, "a")); }));
+  return t;
+}
+const goalsText = m => m.goals.map(g => (g.scorer ? playerName(g.scorer) : "Unknown") + (g.assists.length ? ` (a. ${g.assists.map(playerName).join(", ")})` : "")).join(" · ");
+// Squad options for a scorer/assist picker: starters from the match's lineup first; excluded players are already on that goal.
+function playerOptions(sel, exclude, emptyLabel){
+  const started = new Set(mdraft.slots.map(s => s.pid).filter(Boolean));
+  const opt = p => `<option value="${p.id}" ${p.id === sel ? "selected" : ""}>${esc((p.num != null ? p.num + " · " : "") + p.name)}</option>`;
+  const avail = sortedPlayers().filter(p => !exclude.includes(p.id));
+  const a = avail.filter(p => started.has(p.id)), b = avail.filter(p => !started.has(p.id));
+  let html = `<option value="">${emptyLabel}</option>`;
+  if(sel && !playerById(sel)) html += `<option value="${esc(sel)}" selected>Former player</option>`;
+  if(a.length) html += `<optgroup label="Started">${a.map(opt).join("")}</optgroup>`;
+  if(b.length) html += `<optgroup label="${a.length ? "Rest of squad" : "Squad"}">${b.map(opt).join("")}</optgroup>`;
+  return html;
+}
+function renderMatchForm(focusKey){
+  const m = mdraft, f = $("#mForm");
+  if(!focusKey && f.contains(document.activeElement)) focusKey = document.activeElement.dataset.k;
+  const luOpts = state.lineups.map(l => `<option value="${l.id}" ${l.id === m.lineupId ? "selected" : ""}>${esc(l.name)}</option>`).join("")
+    + (state.lineups.some(l => l.id === m.lineupId) ? "" : `<option value="" selected>${esc(m.lineupName || "Lineup")} (deleted)</option>`);
+  const stepper = (k, label) => `<div class="sc"><span class="lbl" id="lbl-${k}">${label}</span><div class="stp"><button class="btn sq" type="button" data-k="${k}-" data-sc="${k}" data-d="-1" aria-label="${label} minus one" ${m[k] ? "" : "disabled"}>−</button><output aria-labelledby="lbl-${k}" aria-live="polite">${m[k]}</output><button class="btn sq" type="button" data-k="${k}+" data-sc="${k}" data-d="1" aria-label="${label} plus one" ${m[k] >= 99 ? "disabled" : ""}>+</button></div></div>`;
+  const goals = m.goals.map((g, i) => `<div class="goal"><div class="gh"><span class="gn">Goal ${i + 1}</span><select data-k="g${i}s" data-g="${i}" aria-label="Goal ${i + 1} scorer">${playerOptions(g.scorer, g.assists, "Unknown / own goal")}</select></div>`
+    + g.assists.map((a, j) => `<div class="ast"><span class="lbl">Assist</span><select data-k="g${i}a${j}" data-g="${i}" data-a="${j}" aria-label="Goal ${i + 1} assist ${j + 1}">${playerOptions(a, [g.scorer, ...g.assists.filter((_, x) => x !== j)], "Pick a player")}</select><button class="btn sq" type="button" data-k="g${i}r${j}" data-g="${i}" data-rmast="${j}" aria-label="Remove goal ${i + 1} assist ${j + 1}">✕</button></div>`).join("")
+    + (g.assists.length < 2 ? `<button class="btn addast" type="button" data-k="g${i}+" data-g="${i}" data-addast>+ Assist</button>` : "") + `</div>`).join("");
+  f.innerHTML = `<h2>${m.id ? "Edit match" : "New match"}</h2>
+    <label class="fld">Opponent<input type="text" name="opponent" data-k="opp" maxlength="40" placeholder="e.g. Riverside FC" value="${esc(m.opponent)}"></label>
+    <div class="grid2"><label class="fld">Date<input type="date" name="date" data-k="date" value="${esc(m.date)}"></label><label class="fld">Venue<select name="home" data-k="home"><option value="1" ${m.home ? "selected" : ""}>Home</option><option value="0" ${m.home ? "" : "selected"}>Away</option></select></label></div>
+    <label class="fld">Lineup<select name="lineup" data-k="lu">${luOpts}</select></label>
+    <p class="hint">${esc(m.format)} · ${esc(m.formation)} formation</p>
+    <div class="score">${stepper("us", "Us")}<span class="dash" aria-hidden="true">–</span>${stepper("them", "Them")}</div>
+    ${m.goals.length ? `<div class="goals">${goals}</div>` : ""}
+    <label class="fld">Notes<textarea name="notes" data-k="notes" maxlength="500" rows="2">${esc(m.notes)}</textarea></label>
+    <div class="row"><button class="btn primary" type="submit">${m.id ? "Save changes" : "Save match"}</button>${m.id ? `<button class="btn" type="button" data-cancel>Cancel</button>` : ""}</div>
+    <p class="hint" id="mMsg" aria-live="polite"></p>`;
+  if(focusKey){ const el = f.querySelector(`[data-k="${focusKey}"]`); if(el && !el.disabled) el.focus(); }
+}
+function renderMatchList(){
+  const s = teamStats(), names = {P:"Played", W:"Won", D:"Drawn", L:"Lost", GF:"Goals for", GA:"Goals against", GD:"Goal difference"};
+  $("#mRecord").innerHTML = `<div class="stats">${Object.keys(names).map(k => `<div class="stat"><b>${k === "GD" && s.GD > 0 ? "+" : ""}${s[k]}</b><abbr title="${names[k]}">${k}</abbr></div>`).join("")}</div>`
+    + `<div class="formrow"><span class="lbl">Form</span>${s.form.length ? s.form.map(r => `<span class="res ${r}">${r}</span>`).join("") : `<span class="hint">No matches yet</span>`}</div>`;
+  const list = [...state.matches].sort(byDate).reverse();
+  $("#mCount").textContent = list.length ? plural(list.length, "match", "matches") : "";
+  $("#mList").innerHTML = list.length ? list.map(m => { const r = matchResult(m); return `<li class="${mdraft && mdraft.id === m.id ? "on" : ""}"><span class="res ${r}" title="${{W:"Win", D:"Draw", L:"Loss"}[r]}">${r}</span><div style="flex:1;min-width:0"><div class="nm">${m.home ? "vs" : "@"} ${esc(m.opponent || "Opponent")}</div><div class="meta">${fmtDate(m.date)} · ${m.home ? "Home" : "Away"} · ${esc(m.format)} ${esc(m.formation)}</div>${m.goals.length ? `<div class="meta wrap">⚽ ${esc(goalsText(m))}</div>` : ""}</div><span class="fs">${m.us}–${m.them}</span><button class="btn" type="button" data-open="${m.id}">Edit</button><button class="btn danger sq" type="button" data-del="${m.id}" aria-label="Delete match">✕</button></li>`; }).join("")
+    : `<li class="empty-note" style="display:block">No matches yet. Fill in the form and press Save match.</li>`;
+}
+function renderMatches(){ if(!mdraft) mdraft = newMatch(); renderMatchForm(); renderMatchList(); }
 
 /* ---------- Sheet ---------- */
 let sheetDone = null, sheetReturn = null;
@@ -1011,14 +1153,16 @@ function runSplash(){
 }
 
 /* ---------- Tabs & events ---------- */
+const TABS = ["lineup","board","players","matches"];
 function setTab(name){
-  if(!["lineup","board","players"].includes(name)) name = "lineup";
+  if(!TABS.includes(name)) name = "lineup";
   document.querySelectorAll(".tabs button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === name)));
-  ["lineup","board","players"].forEach(n => { $("#p-" + n).hidden = n !== name; });
+  TABS.forEach(n => { $("#p-" + n).hidden = n !== name; });
   try { localStorage.setItem(LS_TAB, name); } catch(_){}
   if(name === "lineup"){ luField.paint(); renderLineup(); }
   if(name === "board"){ bdField.paint(); renderBoard(); }
   if(name === "players") renderPlayers();
+  if(name === "matches") renderMatches();
 }
 document.querySelectorAll(".tabs button").forEach(b => b.onclick = () => setTab(b.dataset.tab));
 function esc(s){ return String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
@@ -1044,6 +1188,7 @@ document.querySelectorAll(".labelSelect").forEach(s => s.onchange = e => { state
 $("#bench").addEventListener("click", e => { const c = e.target.closest("[data-pid]"); if(c) onBenchTap(c.dataset.pid); });
 $("#autoFill").onclick = () => { autoFill(state, lineup()); persist(); renderLineup(); };
 $("#clearField").onclick = () => { lineup().slots.forEach(s => s.pid = null); persist(); renderLineup(); };
+$("#luMatch").onclick = () => { mdraft = newMatch(); setTab("matches"); $("#mForm [name=opponent]").focus(); };
 
 // board controls
 $("#showOpp").onchange = e => { ensureBoard().showOpp = e.target.checked; persist(); renderBoardField(); };
@@ -1106,7 +1251,91 @@ $("#plist").addEventListener("submit", e => {
   editing = null; persist(); renderPlayers();
 });
 
-function renderAll(){ applyTeamColors(); renderLineup(); renderBoard(); renderPlayers(); }
+// matches
+$("#mForm").addEventListener("input", e => { const n = e.target.name; if(n === "opponent" || n === "date" || n === "notes") mdraft[n] = e.target.value; });
+$("#mForm").addEventListener("keydown", e => { if(e.key === "Enter" && e.target.tagName === "INPUT") e.preventDefault(); });
+$("#mForm").addEventListener("change", e => {
+  const el = e.target, m = mdraft;
+  if(el.name === "home"){ m.home = el.value === "1"; return; }
+  if(el.name === "lineup"){ const lu = state.lineups.find(l => l.id === el.value); if(lu){ snapLineup(m, lu); renderMatchForm(); } return; }
+  if(el.dataset.g == null) return;
+  const g = m.goals[+el.dataset.g], v = el.value || null;
+  if(el.dataset.a != null) g.assists[+el.dataset.a] = v;
+  else { g.scorer = v; g.assists = g.assists.map(a => a === v ? null : a); }
+  renderMatchForm();
+});
+$("#mForm").addEventListener("click", e => {
+  const b = e.target.closest("button"); if(!b || b.type === "submit") return;
+  const m = mdraft;
+  if(b.dataset.sc){
+    const k = b.dataset.sc; m[k] = clamp(m[k] + +b.dataset.d, 0, 99);
+    if(k === "us"){ while(m.goals.length < m.us) m.goals.push({scorer:null, assists:[]}); m.goals.length = m.us; }
+    renderMatchForm(); return;
+  }
+  if(b.dataset.addast != null){ const i = +b.dataset.g, g = m.goals[i]; g.assists.push(null); renderMatchForm(`g${i}a${g.assists.length - 1}`); return; }
+  if(b.dataset.rmast != null){ const i = +b.dataset.g; m.goals[i].assists.splice(+b.dataset.rmast, 1); renderMatchForm(`g${i}+`); return; }
+  if(b.dataset.cancel != null){ mdraft = newMatch(); renderMatches(); }
+});
+$("#mForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const saved = normalizeMatch({...mdraft, id:mdraft.id || uid(), created:mdraft.created || Date.now()});
+  const i = state.matches.findIndex(x => x.id === saved.id); if(i >= 0) state.matches[i] = saved; else state.matches.push(saved);
+  persist(); mdraft = newMatch(); renderMatches(); if(state.players.length) renderPlayers();
+  $("#mMsg").textContent = `Saved: ${saved.home ? "vs" : "@"} ${saved.opponent || "Opponent"}, ${saved.us}–${saved.them}.`;
+});
+$("#mList").addEventListener("click", e => {
+  const o = e.target.closest("[data-open]");
+  if(o){ const m = state.matches.find(x => x.id === o.dataset.open); if(m){ mdraft = clone(m); renderMatches(); $("#mForm").scrollIntoView({block:"start", behavior:"smooth"}); } return; }
+  const d = e.target.closest("[data-del]"); if(!d) return;
+  const id = d.dataset.del;
+  if(mDelArmed !== id){ mDelArmed = id; d.textContent = "Delete?"; d.classList.add("confirm"); d.classList.remove("sq"); setTimeout(() => { if(mDelArmed === id){ mDelArmed = null; renderMatchList(); } }, 3500); return; }
+  mDelArmed = null; state.matches = state.matches.filter(x => x.id !== id);
+  if(mdraft && mdraft.id === id) mdraft = newMatch();
+  persist(); renderMatches();
+});
+
+// backup: players + matches as a JSON file
+let pendingImport = null;
+function readBackup(obj){
+  if(!obj || obj.app !== "touchline" || !Array.isArray(obj.players) || !Array.isArray(obj.matches)) return null;
+  const seen = new Set();
+  const players = obj.players.filter(p => p && typeof p === "object" && String(p.name ?? "").trim()).map(p => {
+    const id = typeof p.id === "string" && p.id && !seen.has(p.id) ? p.id : uid(); seen.add(id);
+    const n = parseInt(p.num, 10);
+    return {id, name:String(p.name).trim().slice(0, 40), num:Number.isFinite(n) ? clamp(n, 0, 99) : null, pos:POS_LIST.includes(p.pos) ? p.pos : "Any"};
+  });
+  return {players, matches:obj.matches.map(normalizeMatch).filter(Boolean)};
+}
+const squadText = (np, nm) => `${plural(np, "player", "players")} and ${plural(nm, "match", "matches")}`;
+$("#bkExport").onclick = () => {
+  const data = {app:"touchline", kind:"backup", v:1, exported:new Date().toISOString(), players:state.players, matches:state.matches};
+  const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], {type:"application/json"}));
+  const a = document.createElement("a"); a.href = url; a.download = `touchline-backup-${today()}.json`;
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+  $("#bkMsg").textContent = `Exported ${squadText(state.players.length, state.matches.length)}.`;
+};
+$("#bkImport").onclick = () => $("#bkFile").click();
+$("#bkFile").onchange = async e => {
+  const file = e.target.files[0]; e.target.value = ""; if(!file) return;
+  let b = null; try { b = readBackup(JSON.parse(await file.text())); } catch(_){}
+  pendingImport = b; $("#bkConfirmRow").hidden = !b;
+  if(!b){ $("#bkMsg").textContent = "That file isn't a Touchline backup. Nothing was changed."; return; }
+  $("#bkMsg").textContent = `Replace your ${squadText(state.players.length, state.matches.length)} with ${squadText(b.players.length, b.matches.length)} from ${file.name}?`;
+  $("#bkConfirm").focus();
+};
+$("#bkCancel").onclick = () => { pendingImport = null; $("#bkConfirmRow").hidden = true; $("#bkMsg").textContent = "Import cancelled. Nothing was changed."; };
+$("#bkConfirm").onclick = () => {
+  const b = pendingImport; if(!b) return;
+  pendingImport = null; $("#bkConfirmRow").hidden = true;
+  state.players = b.players; state.matches = b.matches;
+  const ids = new Set(state.players.map(p => p.id));
+  state.lineups.forEach(l => { let gone = false; l.slots.forEach(s => { if(s.pid && !ids.has(s.pid)){ s.pid = null; gone = true; } }); if(gone) autoFill(state, l); });
+  state.board = null; state.example = false; editing = null; confirmDel = null; mdraft = null;
+  persist(); renderAll();
+  $("#bkMsg").textContent = `Imported ${squadText(b.players.length, b.matches.length)}.`;
+};
+
+function renderAll(){ applyTeamColors(); renderLineup(); renderBoard(); renderPlayers(); renderMatches(); }
 
 /* ---------- Boot ---------- */
 luField = makeField($("#luField"), {
@@ -1130,7 +1359,7 @@ bdField = makeField($("#bdField"), {
 renderAll();
 let startTab = "lineup";
 try { startTab = localStorage.getItem(LS_TAB) || "lineup"; } catch(_){}
-const hash = (location.hash || "").slice(1); if(["lineup","board","players"].includes(hash)) startTab = hash;
+const hash = (location.hash || "").slice(1); if(TABS.includes(hash)) startTab = hash;
 setTab(startTab);
 runSplash();
 setStatus("local");

@@ -1,6 +1,6 @@
 // Offline support: the app shell is cached on first visit so it opens at the field without signal.
 // Bump VERSION whenever you change index.html so phones pick up the new copy.
-const VERSION = "touchline-v1";
+const VERSION = "touchline-v2";
 const SHELL = ["./", "index.html", "manifest.webmanifest", "icon-192.png", "icon-512.png", "icon-maskable-512.png", "apple-touch-icon.png"];
 
 self.addEventListener("install", e => {
