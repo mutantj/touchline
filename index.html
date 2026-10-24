@@ -236,7 +236,6 @@ textarea{resize:vertical;min-height:60px}
           <button class="btn" id="luNew" type="button">New</button>
           <button class="btn" id="luRename" type="button">Rename</button>
           <button class="btn danger" id="luDelete" type="button">Delete</button>
-          <button class="btn" id="luMatch" type="button">Record match</button>
         </div>
         <div class="row" id="luRenameRow" hidden>
           <label class="fld grow">Lineup name<input type="text" id="luName" maxlength="40"></label>
@@ -1190,7 +1189,6 @@ document.querySelectorAll(".labelSelect").forEach(s => s.onchange = e => { state
 $("#bench").addEventListener("click", e => { const c = e.target.closest("[data-pid]"); if(c) onBenchTap(c.dataset.pid); });
 $("#autoFill").onclick = () => { autoFill(state, lineup()); persist(); renderLineup(); };
 $("#clearField").onclick = () => { lineup().slots.forEach(s => s.pid = null); persist(); renderLineup(); };
-$("#luMatch").onclick = () => { mdraft = newMatch(); setTab("matches"); $("#mForm [name=opponent]").focus(); };
 
 // board controls
 $("#showOpp").onchange = e => { ensureBoard().showOpp = e.target.checked; persist(); renderBoardField(); };
